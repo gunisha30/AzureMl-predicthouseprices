@@ -15,35 +15,39 @@ scoring_uri = "http://d86c8f6d-4026-41c5-88ac-8bcd72752825.southcentralus.azurec
 data = {"data":
         [
           {
-            bedrooms
-              bathrooms
-              sqft_living
-              sqft_lot
-              floors
-              view
-              condition
-              grade
-              sqft_above
-              sqft_basement
-              yr_built
-              lat
-              long
-              sqft_living15
-              sqft_lot15
+              bedrooms:3
+              bathrooms:2.25
+              sqft_living:1715
+              sqft_lot:6819
+              floors:2
+              view:0
+              condition:3
+              grade:7
+              sqft_above:1715
+              sqft_basement:0
+              #yr_built
+              lat:47.3097
+              long:-122.327
+              sqft_living15:2238
+              sqft_lot15:6819
 
           },
           {
-            "city_development_index": 0.665,
-            "gender": "Female",
-            "relevent_experience": "Has relevent experience",
-            "enrolled_university": "no_enrollment",
-            "education_level": "Graduate",
-            "major_discipline": "STEM",
-            "experience": 18,
-            "company_size": "100-500",
-            "company_type": "Pvt Ltd",
-            "last_new_job": 4,
-            "training_hours": 43
+            bedrooms:3
+              bathrooms:1.75
+              sqft_living:2450
+              sqft_lot:2691
+              floors:2
+              view:0
+              condition:3
+              grade:8
+              sqft_above:1750
+              sqft_basement:700
+              #yr_built
+              lat:47.6386
+              long:-122.36
+              sqft_living15:1760
+              sqft_lot15:3573
           },
       ]
     }
