@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import os
 import json
 import pickle
@@ -27,4 +21,3 @@ def run(data):
         return json.dumps({"result": result.tolist()})
     except Exception as e:
         return json.dumps({"error": str(e)})
-

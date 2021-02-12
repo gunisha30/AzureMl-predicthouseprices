@@ -14,6 +14,7 @@ ws = run.experiment.workspace
 ds = ws.datasets['housedata']
 
 def clean_data(data):
+    data=data.to_pandas_dataframe()
     dCol = ['id', 'date', 'zipcode', 'waterfront', 'yr_renovated']
     data.drop(dCol, axis=1, inplace=True)
     x, y = data.drop('price', axis=1), data['price']
