@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 from azureml.core.run import Run
 from azureml.core import Dataset
+from sklearn.preprocessing import StandardScaler
 
 run = Run.get_context()
 ws = run.experiment.workspace
@@ -24,25 +25,22 @@ def main():
     # Add arguments to script
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--lrate', type=float, default=1.0, help="Learning rate")
-    parser.add_argument('--niter', type=int, default=100, help="Number of iterations")
+
+    parser.add_argument('--n_jobs', type=int, default=1, help="Number of jobs")
 
     args = parser.parse_args()
 
-    run.log("Learning rate:", np.float(args.lrate))
-    run.log("Number of iterations:", np.int(args.niter))
+
+    run.log("Number of jobs:", np.int(args.n_jobs))
     x, y = clean_data(ds)
     x_train, x_test, y_train, y_test = train_test_split(x, y)
     st = StandardScaler()
     x_train = st.fit_transform(x_train)
     x_test = st.transform(x_test)
-    model = LinearRegression(lrate=args.lrate, niter=args.niter).fit(x_train, y_train)
+    model = LinearRegression(n_jobs=args.n_jobs).fit(x_train, y_train)
     y_pred = model.predict(x_test)
-    mse= mean_squared_error (y,y_pred)
+    mse= mean_squared_error (y_test,y_pred)
     run.log("MSE", np.float(mse))
-
-#     accuracy = model.score(x_test, y_test)
-#     run.log("Accuracy", np.float(accuracy))
 
     os.makedirs('outputs', exist_ok=True)
     joblib.dump(model, 'outputs/project_model.joblib')
